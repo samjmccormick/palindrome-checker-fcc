@@ -1,5 +1,6 @@
 const textInput = document.getElementById("text-input");
 const checkButton = document.getElementById("check-button");
+const result = document.getElementById("result");
 
 /* const cleanInputString = (str) => {
 	const regex = /[^abcdefghinklmnopqrstuvwxyz]/gi;
@@ -32,8 +33,16 @@ function checkPalindromeString (str) {
 	return checkPalindromeArray(stringArray);
 }
 
+function checkOutput (str) {
+	if (checkPalindromeString(str) === false) {
+		result.innerHTML = `
+		<p><b>${str}</b> is not a palindrome.<p> `
+	} else {
+		result.innerHTML = `
+		<p><b>${str}</b> is a palindrome.<p> `
+	}
+}
 
-console.log(checkPalindromeString("testtset"));
+checkOutput('te5465stts446654et');
 
-
-checkButton.addEventListener("click", cleanInputString(textInput));
+checkButton.addEventListener("submit", checkOutput(textInput));
