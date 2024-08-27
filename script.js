@@ -1,5 +1,5 @@
 const textInput = document.getElementById("text-input");
-const checkButton = document.getElementById("check-button");
+const checkButton = document.getElementById("check-btn");
 const result = document.getElementById("result");
 
 /* const cleanInputString = (str) => {
@@ -13,23 +13,24 @@ function below is giving the same error, but correctly outputs to the console
 */
 
 function cleanInputString (str) {
-	const regex = /[^abcdefghijnklmnopqrstuvwxyz]/gi;
+	const regex = /[^abcdefghijnklmnopqrstuvwxyz0123456789]/gi;
 	return str.replace(regex, '');
-	/* tested and this removes all characters other than letters, including spaces */
+	/* tested and this removes all characters other than letters and numbers (alphanumeric), including spaces */
 }
 
 function checkPalindromeArray (array) {
 	for (let i = 0; i < (array.length / 2); i++) {
 		if (array[i] !== array[array.length - i - 1]) {
 			return false 
-	} 
+	    } 
 	} 
 }
 
 
 function checkPalindromeString (str) {
 	const cleanString = cleanInputString (str);
-	const stringArray = cleanString.split("");
+	const lowerCaseString = cleanString.toLowerCase();
+	const stringArray = lowerCaseString.split("");
 	return checkPalindromeArray(stringArray);
 }
 
@@ -43,6 +44,6 @@ function checkOutput (str) {
 	}
 }
 
-checkOutput('te5465stts446654et');
+checkButton.addEventListener("click", checkOutput(textInput.value));
 
-checkButton.addEventListener("submit", checkOutput(textInput));
+/* dang they just used the 'reverse' function and checked if it was equal to the original, smart */
