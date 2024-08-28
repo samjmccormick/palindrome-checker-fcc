@@ -35,6 +35,12 @@ function checkPalindromeString (str) {
 }
 
 function checkOutput (str) {
+	
+	if (textInput.value === "") {
+		alert('Please input a value');
+		return;
+	} else {
+	
 	if (checkPalindromeString(str) === false) {
 		result.innerHTML = `
 		<p><b>${str}</b> is not a palindrome.<p> `
@@ -43,7 +49,13 @@ function checkOutput (str) {
 		<p><b>${str}</b> is a palindrome.<p> `
 	}
 }
+}
 
-checkButton.addEventListener("click", checkOutput(textInput.value));
+
+
+checkButton.addEventListener("click", () => {
+	checkOutput(textInput.value);
+	textInput.value = '';
+});
 
 /* dang they just used the 'reverse' function and checked if it was equal to the original, smart */
